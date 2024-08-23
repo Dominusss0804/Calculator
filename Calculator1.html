@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            padding: 20px;
+            height: 500px;
+            width: 300px;
+            border: 1px solid black;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgb(25, 23, 23);
+        }
+
+        .answerScreen{
+            height: 200px;
+            width: 100%;
+            border: 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            background-color: gray;
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: hidden;  /* Hides overflow text */
+            white-space: nowrap;  /* Prevents text from wrapping */
+        }
+        .gridContainer{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn{
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            font-size: 1rem;
+            color: white;
+            background-color: gray;
+            border: 0;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+        }
+
+        p{
+            font-size: 1.5rem;
+        }
+
+        .mathOperation{
+            background-color: rgb(185, 124, 12);
+        }
+
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <div class = "answerScreen">
+            <p></p>
+        </div>
+        <div class = "gridContainer">
+            <button id = "one" class = "btn">1</button>
+            <button id = "two" class = "btn">2</button>
+            <button id = "three" class = "btn">3</button>
+            <button id = "plus" class = "btn mathOperation">+</button>
+            <button id = "four" class = "btn">4</button>
+            <button id = "five" class = "btn">5</button>
+            <button id = "six" class = "btn">6</button>
+            <button id = "minus" class = "btn mathOperation">-</button>
+            <button id = "seven" class = "btn">7</button>
+            <button id = "eight" class = "btn">8</button>
+            <button id = "nine" class = "btn">9</button>
+            <button id = "ast" class = "btn mathOperation">*</button>
+            <button id = "zero" class = "btn">0</button>
+            <button id = "dot" class = "btn">.</button>
+            <button id = "equal" class = "btn">=</button>
+            <button id = "divide" class = "btn mathOperation">/</button>
+            <button id = "clear" class = "btn">CLR</button>
+            <button id = "delete" class = "btn">DEL</button>
+        </div>
+    </div>
+    
+    
+
+    <script>
+        let calculation = "";
+        let one = document.getElementById("one");
+        let two = document.getElementById("two");
+        let three = document.getElementById("three");
+        let plus = document.getElementById("plus");
+        let four = document.getElementById("four");
+        let five = document.getElementById("five");
+        let six = document.getElementById("six");
+        let minus = document.getElementById("minus");
+        let seven = document.getElementById("seven");
+        let eight = document.getElementById("eight");
+        let nine = document.getElementById("nine");
+        let ast = document.getElementById("ast");
+        let zero = document.getElementById("zero");
+        let dot = document.getElementById("dot");
+        let equal = document.getElementById("equal");
+        let divide = document.getElementById("divide");
+        let clear = document.getElementById("clear");
+        let del = document.getElementById("delete");
+
+        let displayAnswer = document.querySelector("p");
+        let answerScreen = document.querySelector(".answerScreen")
+
+        function showAnswer(){
+            displayAnswer.textContent = calculation;
+            answerScreen.scrollLeft = answerScreen.scrollWidth;
+        }
+
+        one.onclick = function(){
+            calculation += "1";
+            showAnswer();
+        }
+
+        two.onclick = function(){
+            calculation += "2";
+            showAnswer();
+        }
+
+        three.onclick = function(){
+            calculation += "3";
+            showAnswer();
+        }
+
+        plus.onclick = function(){
+            calculation += ' + ';
+            showAnswer();
+        }
+
+        four.onclick = function(){
+            calculation += "4";
+            showAnswer();
+        }
+
+        five.onclick = function(){
+            calculation += "5";
+            showAnswer();
+        }
+
+        six.onclick = function(){
+            calculation += "6";
+            showAnswer();
+        }
+
+        minus.onclick = function(){
+            calculation += ' - ';
+            showAnswer();
+        }
+
+        seven.onclick = function(){
+            calculation += "7";
+            showAnswer();
+        }
+
+        eight.onclick = function(){
+            calculation += "8";
+            showAnswer();
+        }
+
+        nine.onclick = function(){
+            calculation += "9";
+            showAnswer();
+        }
+
+        ast.onclick = function(){
+            calculation += ' * ';
+            showAnswer();
+        }
+
+        zero.onclick = function(){
+            calculation += "0";
+            showAnswer();
+        }
+
+        dot.onclick = function(){
+            calculation += '.';
+            showAnswer();
+        }
+
+        equal.onclick = function(){
+            try {
+                calculation = eval(calculation);
+            } catch {
+                calculation = "Syntax Error";
+            }
+            showAnswer();
+        }
+
+        divide.onclick = function(){
+            calculation += ' / ';
+            showAnswer();
+        }
+
+        clear.onclick = function(){
+            calculation = "";
+            showAnswer();
+        }
+
+        del.onclick = function(){
+            calculation = calculation.slice(0,-1);
+            showAnswer();
+        }
+    </script>
+</body>
+</html>
